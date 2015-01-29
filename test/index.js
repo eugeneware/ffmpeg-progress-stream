@@ -29,7 +29,7 @@ describe('ffmpeg-progress-stream', function() {
       }))
     ffmpeg.on('close', function (code) {
       if (code !== 0) return done(new Error('Non zero exit code: ' + code));
-      expect(results.length).to.be.above(2);
+      expect(results.length).to.be.above(1);
       for (var i = 0; i < results.length - 1; i++) {
         var result = results[i];
         expect(Object.keys(result)).to.eql(
@@ -61,7 +61,7 @@ describe('ffmpeg-progress-stream', function() {
       }))
     ffmpeg.on('close', function (code) {
       if (code !== 0) return done(new Error('Non zero exit code: ' + code));
-      expect(results.length).to.be.above(2);
+      expect(results.length).to.be.above(1);
       for (var i = 0; i < results.length - 1; i++) {
         var result = results[i];
         expect(Object.keys(result)).to.eql(
