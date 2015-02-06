@@ -86,7 +86,7 @@ ffmpeg.stderr
   `progress` and `remaining` keys will be present on the progress stream.
 
 The `data` events emitted look like this:
-``` json
+``` js
 { frame: '99',
     fps: '64',
     q: '29.0',
