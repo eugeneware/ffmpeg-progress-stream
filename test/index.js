@@ -72,4 +72,36 @@ describe('ffmpeg-progress-stream', function() {
       done();
     });
   });
+
+  it('should be able to report a frame count', function(done) {
+    this.timeout(0);
+    var frameCountVideo = path.join(__dirname, 'fixtures', 'frame-count.mp4');
+    var params = [
+      '-i', frameCountVideo,
+      '-f', 'null',
+      '-'
+    ];
+
+    var ffmpeg = spawn(ffmpegBin.path, params);
+    var results;
+    ffmpeg.stderr
+      .pipe(progressStream())
+      .pipe(concat(function (data) {
+        results = data;
+      }))
+    ffmpeg.on('close', function (code) {
+      if (code !== 0) return done(new Error('Non zero exit code: ' + code));
+      expect(results.length).to.equal(1);
+      expect(results[0]).to.eql({
+        frame: '15',
+        fps: '0.0',
+        q: '0.0',
+        Lsize: 'N/A',
+        time: '00:00:00.50',
+        bitrate: 'N/A',
+        size: 'N/A'
+      });
+      done();
+    });
+  });
 });
