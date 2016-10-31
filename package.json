@@ -1,6 +1,6 @@
 {
   "name": "ffmpeg-progress-stream",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generate a stream of progress events from the stderr stream of ffmpeg",
   "main": "index.js",
   "scripts": {
