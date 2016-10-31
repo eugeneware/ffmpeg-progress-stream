@@ -23,7 +23,10 @@
   "bugs": {
     "url": "https://github.com/eugeneware/ffmpeg-progress-stream/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "split2": "^2.1.0",
+    "stream-combiner2": "^1.1.1"
+  },
   "devDependencies": {
     "concat-stream": "^1.4.7",
     "expect.js": "~0.3.0",

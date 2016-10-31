@@ -1,4 +1,6 @@
-var stream = require('stream');
+var stream = require('stream'),
+    combine = require('stream-combiner2'),
+    split = require('split2');
 
 module.exports = progressStream;
 function progressStream(total) {
@@ -33,5 +35,6 @@ function progressStream(total) {
   ts._flush = function (cb) {
     cb();
   };
-  return ts;
+
+  return combine.obj(split(/(\r|\r?\n)/), ts);
 }
